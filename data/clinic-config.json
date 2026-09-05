@@ -1,0 +1,146 @@
+{
+  "clinic": {
+    "businessName": "Test Clinic 123",
+    "tagline": "Modern, Gentle Dentistry",
+    "description": "ZAID Design is a modern dental clinic offering gentle, expert care — from preventive checkups and cosmetic dentistry to restorative treatments and orthodontics. Book your visit today.",
+    "phone": "+923148269707",
+    "phoneDisplay": "+923148269707",
+    "whatsapp": "+923148269707",
+    "email": "hello@primedesign.com",
+    "address": "123 Dental Way, Suite 400",
+    "city": "Lahore",
+    "country": "Pakistan",
+    "googleMapsUrl": "https://maps.google.com/?q=Prime+Design+Dental+Clinic",
+    "openingHours": {
+      "weekdays": "Mon-Fri: 8:00 AM - 5:00 PM",
+      "weekend": "Sat-Sun: 9:30 AM - 5:30 PM",
+      "monday": "8:00 AM - 5:00 PM",
+      "tuesday": "8:00 AM - 5:00 PM",
+      "wednesday": "8:00 AM - 5:00 PM",
+      "thursday": "8:00 AM - 5:00 PM",
+      "friday": "8:00 AM - 5:00 PM",
+      "saturday": "9:30 AM - 5:30 PM",
+      "sunday": "9:30 AM - 5:30 PM"
+    },
+    "socialMedia": {
+      "facebook": "#",
+      "twitter": "#",
+      "instagram": "#",
+      "linkedin": "#"
+    },
+    "branding": {
+      "logo": "assets/img/lumora-logo-dark.svg",
+      "logoDark": "assets/img/lumora-logo-dark.svg",
+      "favicon": "assets/img/favicon.svg",
+      "webclip": "assets/img/webclip.png",
+      "ogImage": "assets/img/gen_dentist-examining-patients-teeth-close-up_1.jpg"
+    },
+    "footer": {
+      "copyright": "© 2026 Prime Design",
+      "craftedBy": "Crafted BY Zaid Khan",
+      "fullCopyright": "© 2026 Prime Design. Crafted by ZAID KHAN"
+    }
+  },
+  "dentists": [
+    {
+      "id": 1,
+      "name": "Dr. Olivia Thompson",
+      "title": "Lead Dentist",
+      "specialty": "Pediatric Dentistry",
+      "yearsOfExperience": 15,
+      "bio": "Dedicated to providing compassionate, gentle, and cutting-edge dental treatments with a focus on patient comfort.",
+      "imageUrl": "assets/img/gen_portrait-smiling-doctor-with-stethoscope-around-neck.jpg",
+      "qualifications": [
+        "DDS, Harvard School of Dental Medicine",
+        "Board Certified Pediatric Dentist"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Dr. Rishi Patel",
+      "title": "Cosmetic Dentist",
+      "specialty": "Cosmetic Dentistry",
+      "yearsOfExperience": 12,
+      "bio": "Specializing in transformative smile makeovers and advanced cosmetic procedures.",
+      "imageUrl": "assets/img/gen_portrait-smiling-doctor.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Dr. Daniel Ahmed",
+      "title": "Orthodontist",
+      "specialty": "Orthodontics",
+      "yearsOfExperience": 10,
+      "bio": "Expert in modern orthodontic solutions including clear aligners and traditional braces.",
+      "imageUrl": "assets/img/gen_portrait-doctor.jpg"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "Preventive Dentistry",
+      "slug": "preventive-dentistry",
+      "description": "Comprehensive checkups, cleanings, and routine care to protect and maintain your dental health.",
+      "icon": "🪥",
+      "details": "Regular preventive care is the foundation of a healthy smile. Our preventive services include thorough examinations, professional cleanings, fluoride treatments, and oral cancer screenings."
+    },
+    {
+      "id": 2,
+      "name": "Cosmetic Dentistry",
+      "slug": "cosmetic-dentistry",
+      "description": "From whitening to veneers, achieve the bright, confident smile you have always desired.",
+      "icon": "✨",
+      "details": "Transform your smile with our advanced cosmetic treatments including teeth whitening, porcelain veneers, bonding, and smile makeovers designed specifically for you."
+    },
+    {
+      "id": 3,
+      "name": "Restorative Treatments",
+      "slug": "restorative-treatments",
+      "description": "High-quality fillings, crowns, and implants designed to restore function and aesthetics.",
+      "icon": "🦷",
+      "details": "Restore your smile's function and beauty with our restorative solutions including dental implants, crowns, bridges, and natural-looking fillings."
+    },
+    {
+      "id": 4,
+      "name": "Orthodontics",
+      "slug": "orthodontics",
+      "description": "Straighten teeth and correct bites with modern clear aligners and gentle braces.",
+      "icon": "😁",
+      "details": "Achieve a perfectly aligned smile with our orthodontic treatments including Invisalign clear aligners and traditional braces for patients of all ages."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Kristin Watson",
+      "rating": 5,
+      "text": "I've always been nervous about visiting the dentist, but Prime Design changed everything. The staff is warm, and the care is exceptional. I finally enjoy smiling again.",
+      "image": "assets/img/gen_woman-smiling.jpg",
+      "location": "Peshawar"
+    },
+    {
+      "id": 2,
+      "name": "Michael Carter",
+      "rating": 5,
+      "text": "The team made my dental visit incredibly comfortable. Professional care, clear explanations, and excellent results. I finally feel confident about my smile again.",
+      "image": "assets/img/gen_man-smiling.jpg",
+      "location": "Peshawar"
+    },
+    {
+      "id": 3,
+      "name": "Daniel Hughes",
+      "rating": 5,
+      "text": "From consultation to treatment, everything was smooth and stress-free. The dentist was gentle, and the staff was supportive. Highly recommend their dental services.",
+      "image": "assets/img/gen_patient-smiling.jpg",
+      "location": "Peshawar"
+    }
+  ],
+  "stats": {
+    "yearsOfExperience": "15+",
+    "happyPatients": "5000+",
+    "teamMembers": "25+",
+    "awards": "10+"
+  },
+  "calendly": {
+    "url": "https://calendly.com/shreyasrajsony11"
+  }
+}

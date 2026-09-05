@@ -1,0 +1,133 @@
+<!-- Prime Design mobile menu — hamburger + slide-out drawer -->
+<style>
+/* Mobile drawer — overrides Webflow nav on screens ≤991px */
+@media(max-width:991px){
+  /* Hide the original Webflow nav menu completely on mobile */
+  .navbar_menu.w-nav-menu{display:none!important}
+  /* Make the hamburger button always visible on mobile */
+  .navbar-toggler-button{display:block!important;z-index:10001}
+  /* Animate hamburger bars to X when open */
+  .navbar-toggler-button.w--open .navbar-toggler_bar_top{transform:translateY(7px) rotate(45deg);transition:transform .3s ease}
+  .navbar-toggler-button.w--open .navbar-toggler_bar-middle{opacity:0;transition:opacity .2s ease}
+  .navbar-toggler-button.w--open .navbar_toggler-bar-bottom{transform:translateY(-7px) rotate(-45deg);transition:transform .3s ease}
+}
+/* Drawer overlay */
+.pd-drawer-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(1,31,35,.45);backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease}
+.pd-drawer-overlay.active{display:block;opacity:1}
+/* Drawer panel */
+.pd-drawer{position:fixed;top:0;right:0;width:320px;max-width:85vw;height:100vh;z-index:10000;background:#fff;box-shadow:-8px 0 40px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.pd-drawer.open{transform:translateX(0)}
+/* Drawer header */
+.pd-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #eef1f3;flex-shrink:0}
+.pd-drawer-header img{height:26px}
+.pd-drawer-close{background:none;border:none;cursor:pointer;padding:4px;color:#445;font-size:0;line-height:0}
+.pd-drawer-close svg{width:24px;height:24px}
+/* Drawer nav links */
+.pd-drawer-nav{flex:1;padding:16px 0;overflow-y:auto}
+.pd-drawer-nav a{display:flex;align-items:center;gap:10px;padding:13px 24px;font-family:'Sora',sans-serif;font-size:15px;font-weight:500;color:#011f23;text-decoration:none;transition:background .15s,color .15s}
+.pd-drawer-nav a:hover,.pd-drawer-nav a:focus{background:#f0fafb;color:#24a3b1}
+.pd-drawer-nav a.active{color:#24a3b1;font-weight:600}
+.pd-drawer-nav a svg{width:18px;height:18px;flex-shrink:0;opacity:.6}
+/* Drawer CTA */
+.pd-drawer-cta{padding:16px 24px 24px;border-top:1px solid #eef1f3;flex-shrink:0}
+.pd-drawer-cta a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 20px;background:linear-gradient(135deg,#3fc7d6,#24a3b1);color:#fff;border-radius:10px;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;text-decoration:none;transition:opacity .2s}
+.pd-drawer-cta a:hover{opacity:.9}
+.pd-drawer-cta a svg{width:16px;height:16px}
+/* Drawer footer */
+.pd-drawer-footer{padding:16px 24px;border-top:1px solid #eef1f3;flex-shrink:0}
+.pd-drawer-footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.pd-drawer-footer-links a{font-size:12px;color:#667;text-decoration:none;transition:color .15s}
+.pd-drawer-footer-links a:hover{color:#24a3b1}
+.pd-drawer-social{display:flex;gap:12px;margin-top:12px}
+.pd-drawer-social a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#f5f7f8;color:#445;transition:background .15s,color .15s}
+.pd-drawer-social a:hover{background:#e8f8f5;color:#24a3b1}
+.pd-drawer-social a svg{width:16px;height:16px}
+/* Body scroll lock */
+body.pd-drawer-open{overflow:hidden}
+</style>
+
+<div class="pd-drawer-overlay" id="pd-drawer-overlay"></div>
+<div class="pd-drawer" id="pd-drawer">
+  <div class="pd-drawer-header">
+    <a href="index.html"><img src="assets/img/lumora-logo-dark.svg" alt="Prime Design logo"/></a>
+    <button class="pd-drawer-close" id="pd-drawer-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="pd-drawer-nav">
+    <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3v-5h6v5h3a1 1 0 001-1V10"/></svg>Home</a>
+    <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>About Us</a>
+    <a href="service.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Services</a>
+    <a href="blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h5"/></svg>Blog</a>
+    <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 4l8 6 8-6"/></svg>Contact Us</a>
+    <a href="privacy.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Privacy Policy</a>
+    <a href="terms.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Terms &amp; Conditions</a>
+    <a href="cookies.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="10" r="1.5" fill="currentColor"/><circle cx="14" cy="8" r="1" fill="currentColor"/><circle cx="10" cy="15" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1.5" fill="currentColor"/></svg>Cookies</a>
+  </nav>
+  <div class="pd-drawer-cta">
+    <a href="#appointment">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Book Appointment
+    </a>
+  </div>
+  <div class="pd-drawer-footer">
+    <div class="pd-drawer-footer-links">
+      <a href="404.html">404</a>
+      <a href="licenses.html">Licenses</a>
+    </div>
+    <div class="pd-drawer-social">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+      <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var btn=document.querySelector('.navbar-toggler-button');
+  var drawer=document.getElementById('pd-drawer');
+  var overlay=document.getElementById('pd-drawer-overlay');
+  var closeBtn=document.getElementById('pd-drawer-close');
+  if(!btn||!drawer||!overlay)return;
+
+  function openDrawer(){
+    drawer.classList.add('open');
+    overlay.classList.add('active');
+    btn.classList.add('w--open');
+    document.body.classList.add('pd-drawer-open');
+  }
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    overlay.classList.remove('active');
+    btn.classList.remove('w--open');
+    document.body.classList.remove('pd-drawer-open');
+  }
+
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if(drawer.classList.contains('open'))closeDrawer();else openDrawer();
+  });
+  overlay.addEventListener('click',closeDrawer);
+  closeBtn.addEventListener('click',closeDrawer);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+
+  /* Close drawer when clicking any nav link inside it */
+  drawer.querySelectorAll('.pd-drawer-nav a, .pd-drawer-cta a').forEach(function(a){
+    a.addEventListener('click',function(){
+      /* Don't close if it's a modal trigger */
+      if(a.getAttribute('href')==='#appointment'||a.getAttribute('href')==='#contact')return;
+      closeDrawer();
+    });
+  });
+
+  /* Set active link based on current page */
+  var page=location.pathname.split('/').pop()||'index.html';
+  drawer.querySelectorAll('.pd-drawer-nav a').forEach(function(a){
+    if(a.getAttribute('href')===page)a.classList.add('active');
+  });
+})();
+</script>
+<!-- /Prime Design mobile menu -->

@@ -1,0 +1,142 @@
+<!-- Prime Design modals — appointment + contact -->
+<style>
+.pd-modal-overlay{display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);justify-content:center;align-items:center;padding:20px}
+.pd-modal-overlay.active{display:flex}
+.pd-modal{background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 25px 60px rgba(0,0,0,.25);animation:pdSlideUp .3s ease}
+@keyframes pdSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.pd-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:28px;cursor:pointer;color:#667;z-index:2;line-height:1}
+.pd-modal-close:hover{color:#24a3b1}
+.pd-modal-header{padding:28px 32px 0}
+.pd-modal-header h2{font-family:'Sora',sans-serif;font-size:22px;font-weight:600;color:#011f23;margin:0 0 4px}
+.pd-modal-header p{font-size:14px;color:#667;margin:0}
+.pd-modal-body{padding:20px 32px 28px}
+.pd-field{margin-bottom:16px}
+.pd-field label{display:block;font-size:13px;font-weight:500;color:#445;margin-bottom:5px}
+.pd-field input,.pd-field select,.pd-field textarea{width:100%;padding:10px 14px;border:1.5px solid #dce3e8;border-radius:8px;font-size:15px;font-family:inherit;color:#011f23;background:#f8fafb;transition:border .2s}
+.pd-field input:focus,.pd-field select:focus,.pd-field textarea:focus{outline:none;border-color:#24a3b1;background:#fff}
+.pd-field textarea{resize:vertical;min-height:80px}
+.pd-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23667' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.pd-row{display:flex;gap:12px}
+.pd-row .pd-field{flex:1}
+.pd-submit{width:100%;padding:12px;background:linear-gradient(135deg,#3fc7d6,#24a3b1);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;transition:opacity .2s}
+.pd-submit:hover{opacity:.9}
+.pd-submit:disabled{opacity:.5;cursor:not-allowed}
+.pd-success{text-align:center;padding:40px 20px}
+.pd-success svg{width:56px;height:56px;margin-bottom:12px}
+.pd-success h3{font-family:'Sora',sans-serif;font-size:18px;color:#011f23;margin:0 0 6px}
+.pd-success p{font-size:14px;color:#667;margin:0}
+@media(max-width:560px){
+  .pd-modal{margin:10px;max-height:95vh}
+  .pd-modal-header,.pd-modal-body{padding-left:20px;padding-right:20px}
+  .pd-row{flex-direction:column;gap:0}
+}
+</style>
+
+<div id="pd-appointment-modal" class="pd-modal-overlay">
+  <div class="pd-modal">
+    <button class="pd-modal-close" onclick="pdCloseModal('pd-appointment-modal')" aria-label="Close">&times;</button>
+    <div class="pd-modal-header">
+      <h2>Book an Appointment</h2>
+      <p>Fill in your details and we'll get back to you within 10 minutes.</p>
+    </div>
+    <div class="pd-modal-body">
+      <form id="pd-appointment-form" onsubmit="pdSubmitForm(event,'pd-appointment-modal')">
+        <div class="pd-row">
+          <div class="pd-field"><label>Full Name</label><input type="text" name="name" required placeholder="John Doe"/></div>
+          <div class="pd-field"><label>Phone</label><input type="tel" name="phone" required placeholder="+1 (555) 000-0000"/></div>
+        </div>
+        <div class="pd-field"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"/></div>
+        <div class="pd-row">
+          <div class="pd-field"><label>Preferred Date</label><input type="date" name="date" required/></div>
+          <div class="pd-field"><label>Service</label>
+            <select name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Preventive Dentistry</option>
+              <option>Cosmetic Dentistry</option>
+              <option>Restorative Treatment</option>
+              <option>Orthodontics</option>
+              <option>Emergency Care</option>
+              <option>General Checkup</option>
+            </select>
+          </div>
+        </div>
+        <div class="pd-field"><label>Message (optional)</label><textarea name="message" placeholder="Anything we should know..."></textarea></div>
+        <button type="submit" class="pd-submit">Request Appointment</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="pd-contact-modal" class="pd-modal-overlay">
+  <div class="pd-modal">
+    <button class="pd-modal-close" onclick="pdCloseModal('pd-contact-modal')" aria-label="Close">&times;</button>
+    <div class="pd-modal-header">
+      <h2>Contact Us</h2>
+      <p>Have a question? We'd love to hear from you.</p>
+    </div>
+    <div class="pd-modal-body">
+      <form id="pd-contact-form" onsubmit="pdSubmitForm(event,'pd-contact-modal')">
+        <div class="pd-row">
+          <div class="pd-field"><label>Your Name</label><input type="text" name="name" required placeholder="Jane Smith"/></div>
+          <div class="pd-field"><label>Phone</label><input type="tel" name="phone" placeholder="+1 (555) 000-0000"/></div>
+        </div>
+        <div class="pd-field"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"/></div>
+        <div class="pd-field"><label>Subject</label>
+          <select name="subject" required>
+            <option value="" disabled selected>What's this about?</option>
+            <option>General Inquiry</option>
+            <option>Appointment Question</option>
+            <option>Insurance & Billing</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="pd-field"><label>Message</label><textarea name="message" required placeholder="Tell us how we can help..."></textarea></div>
+        <button type="submit" class="pd-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Wire up all #appointment and #contact links to open modals */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href="#appointment"],a[href="#contact"]');
+    if(!a)return;
+    e.preventDefault();
+    var id=a.getAttribute('href')==='#contact'?'pd-contact-modal':'pd-appointment-modal';
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow='hidden';
+  });
+  /* Close on overlay click */
+  document.querySelectorAll('.pd-modal-overlay').forEach(function(o){
+    o.addEventListener('click',function(e){if(e.target===o)pdCloseModal(o.id);});
+  });
+  /* Close on Escape */
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      document.querySelectorAll('.pd-modal-overlay.active').forEach(function(o){pdCloseModal(o.id);});
+    }
+  });
+})();
+function pdCloseModal(id){
+  var m=document.getElementById(id);
+  if(m)m.classList.remove('active');
+  document.body.style.overflow='';
+}
+function pdSubmitForm(e,modalId){
+  e.preventDefault();
+  var f=e.target,d=new FormData(f),parts=[];
+  d.forEach(function(v,k){if(v)parts.push(k+': '+v);});
+  /* Show success state */
+  var body=f.closest('.pd-modal-body');
+  body.innerHTML='<div class="pd-success"><svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#e8f8f5"/><path d="M18 28l7 7 13-13" stroke="#24a3b1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Thank you!</h3><p>We\'ve received your request and will get back to you shortly.</p></div>';
+  /* Reset after 3s and close */
+  setTimeout(function(){
+    pdCloseModal(modalId);
+    setTimeout(function(){location.reload();},400);
+  },2500);
+}
+</script>
+<!-- /Prime Design modals -->
